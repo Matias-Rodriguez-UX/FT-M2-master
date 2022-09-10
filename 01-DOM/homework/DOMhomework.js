@@ -33,7 +33,7 @@ function ToDo (description) {
 
 // Tu código acá:
 ToDo.prototype.completeToDo = function(){
-  this.complete = true;
+  this.complete = !this.complete;
 }
 
 
@@ -59,14 +59,23 @@ function buildToDo(todo, index) {
   // Tu código acá:
 let toDoShell = document.createElement("div")
 toDoShell.className = "toDoShell"
+toDoShell.style.backgroundColor = "yellow"
 let toDoText = document.createElement("span")
+let toDoCheck = document.createElement("input")
+toDoCheck.type = "checkbox"
+toDoText.style.color = "black"
 toDoText.innerHTML = todo.description
-toDoText.id = index
+toDoCheck.id = index
 if(todo.complete === true ){
   toDoText.className = "completeText"
+  toDoCheck.className = "completeCheckbox"
+  toDoCheck.checked = true
+  toDoShell.style.backgroundColor = "black"
+  toDoText.style.color = "white"
 }
 toDoShell.appendChild(toDoText)
-toDoText.addEventListener("click", completeToDo)
+toDoShell.appendChild(toDoCheck)
+toDoCheck.addEventListener("click", completeToDo)
 return toDoShell
 }
 
@@ -113,10 +122,12 @@ items.forEach(element => {toDoContainer.appendChild(element) })
 function addToDo() {
   // Tu código acá:
   let inpVal = document.getElementById("toDoInput").value
-let hacer = new ToDo(inpVal)
-toDoItems.push(hacer)
-inpVal.value=""
-displayToDos()
+  if (inpVal !== ""){
+    let hacer = new ToDo(inpVal)
+    toDoItems.push(hacer)
+    document.getElementById("toDoInput").value = ""
+    displayToDos()
+  }
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
