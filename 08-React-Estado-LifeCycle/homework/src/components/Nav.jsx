@@ -6,7 +6,7 @@ import s from './Nav.module.css'
 function Nav({onSearch}) {
   return (
     <nav className="navbar navbar-dark bg-dark mb-4">
-  <a className="navbar-brand">
+  <a className="navbar-brand" href='local'>
     <img id={s.logoHenry} src={Logo} width="30" height="30" className="d-inline-block align-top mr-4" alt="Logo" />
     Henry - Wheater App
   </a>
@@ -19,6 +19,7 @@ function Nav({onSearch}) {
 </nav>
   );
 };
+
 
 
 export default Nav;
