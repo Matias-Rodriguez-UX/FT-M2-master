@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Nav from '../components/Nav.jsx';
 import Cards from '../components/Cards.jsx';
+import About from '../components/About';
+import Ciudad from '../components/Ciudad';
 
-const apiKey = 'Aqui va la API key que creaste';
+const apiKey = '4ae2636d8dfbdc3044bede63951a019b';
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -13,7 +15,7 @@ function App() {
   }
   function onSearch(ciudad) {
     //Llamado a la API del clima
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}`)
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric`)
       .then(r => r.json())
       .then((recurso) => {
         if(recurso.main !== undefined){
@@ -45,16 +47,17 @@ function App() {
     }
   }
   return (
-    <div className="App">
-      <Nav onSearch={onSearch}/>
-      <div>
-        <Cards
-          cities={cities}
-          onClose={onClose}
-        />
-      </div>
-      <hr />
-    </div>
+  <div className='App'>
+    <Routes>
+      <Route path='/' render={()=><Nav onSearch={onSearch}/>} />
+      <Route exact path='/about' component={About} />
+      <Route exact path='/' render={()=>  <Cards
+        cities={cities}
+        onClose={onClose}
+      />}/>
+      <Route path='/city/:Id' render={({match})=> <Ciudad cityId={onFilter(match.params.Id)}/>} />
+    </Routes>
+  </div>
   );
 }
 
