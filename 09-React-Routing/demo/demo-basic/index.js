@@ -17,9 +17,9 @@ function Home() {
 const Root = (
   <Router>
     <NavBar />
-    <Switch>
-      <Route exact path="/">
-        <Home />
+    
+      <Route exact path="/" component={Home}>
+        {/* <Home /> puedo utilizarlo como componente ya que no le paso la prop */}
       </Route>
       {/* <Route path="/about/other">
         <h2>About Other</h2>
@@ -39,7 +39,7 @@ const Root = (
       <Route path="/">
         <h2>Default if no match</h2>
       </Route>
-    </Switch>
+ 
   </Router>
 );
 

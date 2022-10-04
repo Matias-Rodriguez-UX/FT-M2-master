@@ -50,7 +50,7 @@ function App() {
   <div className='App'>
     <Routes>
       <Route path='/' render={()=><Nav onSearch={onSearch}/>} />
-      <Route exact path='/about' component={About} />
+      <Route exact path='/about' element={<About/>} />
       <Route exact path='/' render={()=>  <Cards
         cities={cities}
         onClose={onClose}
