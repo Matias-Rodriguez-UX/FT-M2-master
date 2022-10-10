@@ -47,17 +47,17 @@ function App() {
     }
   }
   return (
-  <div className='App'>
-    <Routes>
-      <Route path='/' render={()=><Nav onSearch={onSearch}/>} />
+    <div className='App'>
+      <Nav onSearch={onSearch}/>
+      <Routes>
       <Route exact path='/about' element={<About/>} />
-      <Route exact path='/' render={()=>  <Cards
+      <Route exact path='/' element={<Cards
         cities={cities}
         onClose={onClose}
       />}/>
-      <Route path='/city/:Id' render={({match})=> <Ciudad cityId={onFilter(match.params.Id)}/>} />
+      <Route path='/city/:Id' element={({match})=> <Ciudad cityId={onFilter(match.params.Id)}/>} />
     </Routes>
-  </div>
+    </div>
   );
 }
 
