@@ -1,3 +1,20 @@
 .cnt {
     padding-top: 10px;
 }
+.box{
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 0 1rem #00000025 inset;
+    width: 30%;
+  }
+  
+  .grid-responsive{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .box button{
+      float:right;
+      width: fit-content;
+  }
